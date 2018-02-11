@@ -6,6 +6,7 @@ if (!require("data.table")){nstall.packages("data.table")}
 if (!require("reshape2")){install.packages("reshape2")}
 require("data.table")
 require("reshape2")
+require("dplyr")
 
 ## Project:
 ## 1. Merges the training and the test sets to create one data set.
