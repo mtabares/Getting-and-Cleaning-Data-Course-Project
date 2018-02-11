@@ -32,13 +32,13 @@ A full description of the data used in this project can be found at [The UCI Mac
 
 [The source data can be found here.](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
 
-## Identifiers
+## 2. Identifiers & Measurements (Identifed Variables required to work with datasets)
 
+## Identifiers.
 * `subject` - The ID of the test subject
 * `activity` - The type of activity performed when the corresponding measurements were taken
 
-## Measurements
-
+## Measurements.
 * `tBodyAccMeanX`
 * `tBodyAccMeanY`
 * `tBodyAccMeanZ`
@@ -119,11 +119,30 @@ A full description of the data used in this project can be found at [The UCI Mac
 * `fBodyBodyGyroJerkMagStd`
 * `fBodyBodyGyroJerkMagMeanFreq`
 
-## Activity Labels
-
+## Activity Labels.
 * `WALKING` (value `1`): subject was walking during the test
 * `WALKING_UPSTAIRS` (value `2`): subject was walking up a staircase during the test
 * `WALKING_DOWNSTAIRS` (value `3`): subject was walking down a staircase during the test
 * `SITTING` (value `4`): subject was sitting during the test
 * `STANDING` (value `5`): subject was standing during the test
 * `LAYING` (value `6`): subject was laying down during the test
+
+### Step 1. Loading training and the test sets to create one data set (i.e. loading datasets and cleaning them).
+After setting the source directory for the files, read into tables the data located in
+- features.txt
+- activity_labels.txt
+- subject_train.txt
+- x_train.txt
+- y_train.txt
+- subject_test.txt
+- x_test.txt
+- y_test.txt
+
+## Step 2. Selecting only the measurements on the mean and standard deviation for each measurement. 
+In order to prepare features only for mean and standard deviation, a logical vector was create with TRUE values for the ID, mean and stdev columns and FALSE values for the others. Here, data were subset to have the required columns. Besides, the gsub function was used for replacement to clean up the data labels.
+
+## Step 3. Merging datasets and adding labels to generate the tidy dataset.
+Once the datasets were cleaning based in the requered subset of columns and rows, a join of train and test dataset was done. 
+
+## Section 4. Creating a tidy dataset with the average of each variable for each activity and each subject. 
+Finally, a new file (dataset) with the average of each veriable for each activity and subject was generated.
